@@ -1,11 +1,11 @@
-package com.gancidev.cardmanager.dto.service;
+package com.gancidev.cardmanager.dto.controller;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto {
+public class UserRequest {
 
     private Long id;
     private String name;

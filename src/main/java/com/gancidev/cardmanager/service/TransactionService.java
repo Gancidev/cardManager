@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.gancidev.cardmanager.Enum.TypeEnum;
-import com.gancidev.cardmanager.dto.service.TransactionDto;
+import com.gancidev.cardmanager.dto.controller.TransactionRequest;
 import com.gancidev.cardmanager.model.Transaction;
 import com.gancidev.cardmanager.repository.TransactionRepository;
 
@@ -19,20 +19,19 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    /* Servizio per il recupero dei dati di una transazione*/
-    public Transaction getByTransaction_id(Long transaction_id) {
-        return this.transactionRepository.findById(transaction_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
     /* Servizio per la creazione di una transazione*/
-    public Transaction create(TransactionDto dto) {
+    public Transaction create(TransactionRequest dto) {
         Transaction transaction = new Transaction();
         transaction.setCard_id(dto.getCard_id());
         transaction.setCredit(dto.getCredit());
         transaction.setUser_shop_id(dto.getUser_shop_id());
         transaction.setType(dto.getCredit()>0 ? TypeEnum.ACCREDIT.getType() : TypeEnum.PAYMENT.getType());
         transaction.setDate(LocalDateTime.now());
-        return this.transactionRepository.save(transaction);
+        try {
+            return this.transactionRepository.save(transaction);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /* Servizio per il recupero delle transazioni di un negoziante*/
