@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class TransactionRequest {
     private String transaction_id;
+    private String card_number;
     private Long card_id;
     private Long user_shop_id;
     private Double credit;

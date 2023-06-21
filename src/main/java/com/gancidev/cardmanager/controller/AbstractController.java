@@ -16,7 +16,7 @@ public class AbstractController {
 	private HttpServletRequest request;
 
     @Autowired
-    private SessionService sessionService;
+    protected SessionService sessionService;
 
     public Session getSession() {
         String sessionId = request.getHeader("SESSION-TOKEN");

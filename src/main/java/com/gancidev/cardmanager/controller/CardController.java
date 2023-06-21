@@ -47,16 +47,6 @@ public class CardController extends AbstractController{
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
     }
 
-    /* API per accreditare o effettuare un pagamento con una carta*/
-    @PostMapping("/credit")
-    public ResponseEntity<ResponseToFE> updateCredit(@RequestBody CardRequest dto) {
-        Session sessione = getSession();
-        if(sessione!=null && (sessione.getPrivileges().equals("admin") || sessione.getPrivileges().equals("venditori"))){
-            return ResponseEntity.ok(new ResponseToFE(this.cardService.updateCredit(dto)));
-        }
-        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
-    }
-
     /* API per bloccare e sbloccare una carta*/
     @PostMapping("/lockUnlock")
     public ResponseEntity<ResponseToFE> lockUnlock(@RequestBody CardRequest dto) {

@@ -19,6 +19,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     /* Query per il recupero dei dati di un utente mediante l'email*/
     Optional<User> findByEmail(String email);
 
+
+    /* Query per il recupero dei dati di un utente dati email e password*/
+    @Query(value="SELECT * FROM user WHERE email = :email AND password = :password", nativeQuery = true)
+    Optional<User> checkCredential(@Param("email") String email, @Param("password") String password);
+
     /* Query per bloccare e sbloccare un utente data la sua email*/
     @Modifying
     @Transactional
