@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Giuseppe Ganci">
-    <title>Transactions · CardManager</title>
+    <title>Transazioni · CardManager</title>
     <!-- Favicons -->
     <link href="../static/assets/icona_progetto.ico" rel="icon">
     <!-- Bootstrap core CSS -->
@@ -21,16 +21,14 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
+                    <img src="../static/assets/logo.png" alt="" width="300">
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-secondary">Transactions</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Customers</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Cards</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Merchants</a></li>
+                    <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 text-secondary">Transazioni</a></li>
+                    <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+                    <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
+                    <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
                 </ul>
                 <div class="text-end">
                     <button type="button" class="btn btn-danger">Logout</button>
@@ -41,54 +39,55 @@
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4" src="../static/assets/logo.png" alt="" width="300" height="57">
-                <h2>Transactions List</h2>
-                <p class="lead">Below you can see the transactions.</p>
+                <h2>Lista Transazioni</h2>
             </div>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label for="country" class="form-label">Customer</label>
+                    <div class="row filter">
+                        <div class="col-md-2">
+                            <label for="country" class="form-label">Cliente</label>
                             <select class="form-select" id="customer" required>
-                                <option value="">Choose...</option>
-                                <option value="1">User 1</option>
-                                <option value="2">User 2</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="country" class="form-label">Merchant</label>
-                            <select class="form-select" id="customer" required>
-                                <option value="">Choose...</option>
-                                <option value="1">Merchant 1</option>
-                                <option value="2">Merchant 2</option>
+                                <option value="">Scegli...</option>
+                                <option value="1">Cliente 1</option>
+                                <option value="2">Cliente 2</option>
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label for="country" class="form-label">Card</label>
+                            <label for="country" class="form-label">Venditore</label>
                             <select class="form-select" id="customer" required>
-                                <option value="">Choose...</option>
-                                <option value="1">Card 1</option>
-                                <option value="2">Card 2</option>
+                                <option value="">Scegli...</option>
+                                <option value="1">Venditore 1</option>
+                                <option value="2">Venditore 2</option>
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label for="cc-cvv" class="form-label">Min-Price</label>
+                            <label for="country" class="form-label">Carta</label>
+                            <select class="form-select" id="customer" required>
+                                <option value="">Scegli...</option>
+                                <option value="1">Carta 1</option>
+                                <option value="2">Carta 2</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="cc-cvv" class="form-label">Prezzo Minimo</label>
                             <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
                         </div>
                         <div class="col-md-2">
-                            <label for="cc-cvv" class="form-label">Max-Price</label>
+                            <label for="cc-cvv" class="form-label">Prezzo Massimo</label>
                             <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Scarica Report"><i class="bi bi-box-arrow-down"></i></button>
                         </div>
                     </div>
                     <hr class="my-4">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Customers</th>
-                                <th scope="col">Merchant</th>
-                                <th scope="col">Card</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Venditore</th>
+                                <th scope="col">Carta</th>
+                                <th scope="col">Prezzo</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,6 +112,7 @@
                         </tbody>
                     </table>
                 </div>
+                <a class="add_button" href="add_transaction.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Una Transazione</button></a>
             </div>
         </main>
     </div>

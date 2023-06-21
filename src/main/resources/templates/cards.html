@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Giuseppe Ganci">
-    <title>Clienti · CardManager</title>
+    <title>Carte · CardManager</title>
     <!-- Favicons -->
     <link href="../static/assets/icona_progetto.ico" rel="icon">
     <!-- Bootstrap core CSS -->
@@ -26,8 +26,8 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
                     <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
-                    <li><a href="#" class="nav-link px-2 text-secondary">Clienti</a></li>
-                    <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
+                    <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+                    <li><a href="#" class="nav-link px-2 text-secondary">Carte</a></li>
                     <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
                 </ul>
                 <div class="text-end">
@@ -39,14 +39,22 @@
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <h2>Lista Clienti</h2>
+                <h2>Lista Carte</h2>
             </div>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="row filter">
                         <div class="col-md-6">
-                            <label for="cc-cvv" class="form-label">Filtro Cliente</label>
+                            <label for="cc-cvv" class="form-label">Filtro Carta</label>
                             <input type="text" class="form-control" id="cc-cvv" placeholder="Mario" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="cc-cvv" class="form-label">Credito Massimo</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="cc-cvv" class="form-label">Credito Minimo</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Scarica Report"><i class="bi bi-box-arrow-down"></i></button>
@@ -56,39 +64,43 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Email</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Cognome</th>
-                                <th scope="col">Numero di carte</th>
+                                <th scope="col">Numero Carta</th>
+                                <th scope="col">Numero di Transazioni</th>
+                                <th scope="col">Email del proprietario</th>
+                                <th scope="col">Credito</th>
+                                <th scope="col">Disabilita</th>
                                 <th scope="col">Cancella</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">example1@you.com</th>
-                                <td>Larry</td>
-                                <td>Norton</td>
+                                <th scope="row">0000 **** **** 1111</th>
                                 <td>2</td>
+                                <td>example1@you.com</td>
+                                <td>200.00&euro;</td>
+                                <td><input type="checkbox" id="disabled_merchant"></td>
                                 <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                             <tr>
-                                <th scope="row">example2@you.com</th>
-                                <td>Larry</td>
-                                <td>Norton</td>
-                                <td>1</td>
+                                <th scope="row">0000 **** **** 2222</th>
+                                <td>5</td>
+                                <td>example2@you.com</td>
+                                <td>112.00&euro;</td>
+                                <td><input type="checkbox" id="disabled_merchant"></td>
                                 <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                             <tr>
-                                <th scope="row">example3@you.com</th>
-                                <td>Larry</td>
-                                <td>Norton</td>
-                                <td>4</td>
+                                <th scope="row">0000 **** **** 3333</th>
+                                <td>20</td>
+                                <td>example3@you.com</td>
+                                <td>43451.00&euro;</td>
+                                <td><input type="checkbox" id="disabled_merchant"></td>
                                 <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="add_button" href="user_registration.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Un Cliente</button></a>
+                <a class="add_button" href="card_registrarion.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Una Carta</button></a>
             </div>
         </main>
     </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Giuseppe Ganci">
-    <title>Clienti · CardManager</title>
+    <title>Venditori · CardManager</title>
     <!-- Favicons -->
     <link href="../static/assets/icona_progetto.ico" rel="icon">
     <!-- Bootstrap core CSS -->
@@ -26,9 +26,9 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
                     <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
-                    <li><a href="#" class="nav-link px-2 text-secondary">Clienti</a></li>
+                    <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
                     <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
-                    <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
+                    <li><a href="#" class="nav-link px-2 text-secondary">Venditori</a></li>
                 </ul>
                 <div class="text-end">
                     <button type="button" class="btn btn-danger">Logout</button>
@@ -39,13 +39,13 @@
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <h2>Lista Clienti</h2>
+                <h2>Lista dei Venditori</h2>
             </div>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="row filter">
                         <div class="col-md-6">
-                            <label for="cc-cvv" class="form-label">Filtro Cliente</label>
+                            <label for="cc-cvv" class="form-label">Filtro Venditore</label>
                             <input type="text" class="form-control" id="cc-cvv" placeholder="Mario" required>
                         </div>
                         <div class="col-md-2">
@@ -60,6 +60,7 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">Cognome</th>
                                 <th scope="col">Numero di carte</th>
+                                <th scope="col">Disabilita</th>
                                 <th scope="col">Cancella</th>
                             </tr>
                         </thead>
@@ -69,6 +70,7 @@
                                 <td>Larry</td>
                                 <td>Norton</td>
                                 <td>2</td>
+                                <td><input type="checkbox" id="disabled_merchant"></td>
                                 <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                             <tr>
@@ -76,6 +78,7 @@
                                 <td>Larry</td>
                                 <td>Norton</td>
                                 <td>1</td>
+                                <td><input type="checkbox" id="disabled_merchant"></td>
                                 <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                             <tr>
@@ -83,12 +86,13 @@
                                 <td>Larry</td>
                                 <td>Norton</td>
                                 <td>4</td>
+                                <td><input type="checkbox" id="disabled_merchant"></td>
                                 <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="add_button" href="user_registration.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Un Cliente</button></a>
+                <a class="add_button" href="user_registration.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Un Venditore</button></a>
             </div>
         </main>
     </div>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Giuseppe Ganci">
+  <title>Registrazione Utente · CardManager</title>
+  <!-- Favicons -->
+  <link href="../static/assets/icona_progetto.ico" rel="icon">
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <img src="../static/assets/logo.png" alt="" width="300">
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
+          <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+          <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
+          <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
+        </ul>
+        <div class="text-end">
+          <button type="button" class="btn btn-danger">Logout</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <h2>Form di registrazione</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-lg-12">
+          <h4 class="mb-3">Informazioni Utente</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-5">
+                <label for="firstName" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Mario" value="" required>
+              </div>
+              <div class="col-sm-4">
+                <label for="lastName" class="form-label">Cognome</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Rossi" value="" required>
+              </div>
+              <div class="col-md-3">
+                <label for="country" class="form-label">Ruolo</label>
+                <select class="form-select" id="role" required>
+                    <option value="">Scegli...</option>
+                    <option value="admin">Admin</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="venditore">venditore</option>
+                </select>
+            </div>
+              <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="tu@esempio.com" required>
+              </div>
+            </div>
+            <hr class="my-4">
+            <h4 class="mb-3">Informazioni della carta (facoltative)</h4>
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="cc-name" class="form-label">Nome sulla carta</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="Mario Rossi">
+                <small class="text-muted">Il nome completo è presente sulla carta stessa</small>
+              </div>
+              <div class="col-md-6">
+                <label for="cc-number" class="form-label">Numero</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="0000 1111 2222 3333">
+              </div>
+              <div class="col-md-6">
+                <label for="cc-expiration" class="form-label">Scadenza</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="05/27">
+              </div>
+              <div class="col-md-3">
+                <label for="cc-cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="123">
+              </div>
+              <div class="col-md-3">
+                <label for="cc-cvv" class="form-label">Credito Iniziale</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="0.0">
+              </div>
+            </div>
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Registra</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

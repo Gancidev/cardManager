@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Giuseppe Ganci">
-  <title>Registration User · CardManager</title>
+  <title>Dashboard · CardManager</title>
   <!-- Favicons -->
   <link href="../static/assets/icona_progetto.ico" rel="icon">
   <!-- Bootstrap core CSS -->
@@ -21,16 +21,14 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
+          <img src="../static/assets/logo.png" alt="" width="300">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Transactions</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Cards</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Merchants</a></li>
+          <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
+          <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+          <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
+          <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
         </ul>
         <div class="text-end">
           <button type="button" class="btn btn-danger">Logout</button>
@@ -41,65 +39,55 @@
   <div class="container">
     <main>
       <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="../static/assets/logo.png" alt="" width="300" height="57">
-        <h2>User Registration Form</h2>
-        <p class="lead">Below you can enter the user data to be registered in the system.</p>
+        <h2>Dashboard</h2>
+        <p class="lead">Di seguito puoi vedere un resoconto del sistema attivo.</p>
       </div>
-      <div class="row">
-        <div class="col-md-12 col-lg-12">
-          <h4 class="mb-3">Customer Information</h4>
-          <form class="needs-validation" novalidate>
-            <div class="row g-3">
-              <div class="col-sm-5">
-                <label for="firstName" class="form-label">First name</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Mario" value="" required>
-              </div>
-              <div class="col-sm-4">
-                <label for="lastName" class="form-label">Last name</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Rossi" value="" required>
-              </div>
-              <div class="col-md-3">
-                <label for="country" class="form-label">Role</label>
-                <select class="form-select" id="role" required>
-                    <option value="">Choose...</option>
-                    <option value="admin">Admin</option>
-                    <option value="customer">Customer</option>
-                    <option value="merchant">Merchant</option>
-                </select>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Carte</h4>
             </div>
-              <div class="col-12">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-              </div>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Numero di carte: 10</li>
+              </ul>
+              <a href="cards.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutte</button></a>
             </div>
-            <hr class="my-4">
-            <h4 class="mb-3">Card Information</h4>
-            <div class="row gy-3">
-              <div class="col-md-6">
-                <label for="cc-name" class="form-label">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="Mario Rossi" required>
-                <small class="text-muted">Full name as displayed on card</small>
-              </div>
-              <div class="col-md-6">
-                <label for="cc-number" class="form-label">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="0000 1111 2222 3333" required>
-              </div>
-              <div class="col-md-6">
-                <label for="cc-expiration" class="form-label">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="05/27" required>
-              </div>
-              <div class="col-md-3">
-                <label for="cc-cvv" class="form-label">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="123" required>
-              </div>
-              <div class="col-md-3">
-                <label for="cc-cvv" class="form-label">Starting credit</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
-              </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Utenti</h4>
             </div>
-            <hr class="my-4">
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Sign-up</button>
-          </form>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Numero di utenti: 10</li>
+                <li>FILTRO PER FARLE VEDERE SOLO ALL'ADMIN</li>
+                <li>Admin: 100000</li>
+                <li>Clienti: 100000</li>
+                <li>Venditori: 100000</li>
+              </ul>
+              <a href="customers.html"><button type="button" class="w-100 mb-2 btn btn-lg btn-outline-primary">Vedi tutti i clienti</button></a>
+              <a href="merchants.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutti i venditori</button></a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Transazioni</h4>
+            </div>
+            <div class="card-body">
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Numero di transazioni: 10</li>
+                <li>Credito totale ricaricato: 100000</li>
+                <li>Credito totale addebitato: 100000</li>
+              </ul>
+              <a href="transactions.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutte</button></a>
+            </div>
+          </div>
         </div>
       </div>
     </main>

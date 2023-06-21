@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Giuseppe Ganci">
-    <title>Registration Card · CardManager</title>
+    <title>Registrazione Carta · CardManager</title>
     <!-- Favicons -->
     <link href="../static/assets/icona_progetto.ico" rel="icon">
     <!-- Bootstrap core CSS -->
@@ -21,16 +21,14 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                        <use xlink:href="#bootstrap"></use>
-                    </svg>
+                    <img src="../static/assets/logo.png" alt="" width="300">
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Transactions</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Customers</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Cards</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Merchants</a></li>
+                    <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
+                    <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+                    <li><a href="cards.html" class="nav-link px-2 text-secondary">Carte</a></li>
+                    <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
                 </ul>
                 <div class="text-end">
                     <button type="button" class="btn btn-danger">Logout</button>
@@ -41,35 +39,32 @@
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4" src="../static/assets/logo.png" alt="" width="300" height="57">
-                <h2>Card Registration Form</h2>
-                <p class="lead">Below you can enter the card data to be registered in the system.</p>
+                <h2>Form Registrazione carta</h2>
             </div>
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <form class="needs-validation">
-                        <h4 class="mb-3">Card Information</h4>
+                        <h4 class="mb-3">Informazioni della Carta</h4>
                         <div class="row gy-3">
                             <div class="col-md-5">
-                                <label for="cc-name" class="form-label">Name on card</label>
+                                <label for="cc-name" class="form-label">Nome sulla carta</label>
                                 <input type="text" class="form-control" id="cc-name" placeholder="Mario Rossi" required>
-                                <small class="text-muted">Full name as displayed on card</small>
+                                <small class="text-muted">Il nome completo è presente sulla carta stessa</small>
                             </div>
                             <div class="col-md-4">
-                                <label for="cc-number" class="form-label">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="0000 1111 2222 3333"
-                                    required>
+                                <label for="cc-number" class="form-label">Numero</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="0000 1111 2222 3333" required>
                             </div>
                             <div class="col-md-3">
-                                <label for="country" class="form-label">Customer</label>
+                                <label for="country" class="form-label">Cliente</label>
                                 <select class="form-select" id="customer" required>
-                                    <option value="">Choose...</option>
-                                    <option value="1">User 1</option>
-                                    <option value="2">User 2</option>
+                                    <option value="">Scegli...</option>
+                                    <option value="1">Cliente 1</option>
+                                    <option value="2">Cliente 2</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="cc-expiration" class="form-label">Expiration</label>
+                                <label for="cc-expiration" class="form-label">Scadenza</label>
                                 <input type="text" class="form-control" id="cc-expiration" placeholder="05/27" required>
                             </div>
                             <div class="col-md-3">
@@ -77,12 +72,12 @@
                                 <input type="text" class="form-control" id="cc-cvv" placeholder="123" required>
                             </div>
                             <div class="col-md-3">
-                                <label for="cc-cvv" class="form-label">Starting credit</label>
+                                <label for="cc-cvv" class="form-label">Credito Iniziale</label>
                                 <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
                             </div>
                         </div>
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Sign-up</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Registra</button>
                     </form>
                 </div>
             </div>
