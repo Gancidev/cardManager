@@ -17,6 +17,11 @@
 </head>
 
 <body class="bg-light">
+  <script>
+    if (!sessionStorage.getItem('token')) {
+      window.location.href = "login.html";
+    }
+  </script>
   <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -26,9 +31,9 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
           <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
-          <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
           <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
-          <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
+          <li id="clienti"><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+          <li id="venditori"><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
         </ul>
         <div class="text-end">
           <button type="button" id="logout" class="btn btn-danger">Logout</button>
@@ -52,11 +57,12 @@
               <ul class="list-unstyled mt-3 mb-4">
                 <li>Numero di carte: 10</li>
               </ul>
-              <a href="cards.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutte</button></a>
+              <a href="cards.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi
+                  tutte</button></a>
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col" id="utenti">
           <div class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header py-3">
               <h4 class="my-0 fw-normal">Utenti</h4>
@@ -69,8 +75,10 @@
                 <li>Clienti: 100000</li>
                 <li>Venditori: 100000</li>
               </ul>
-              <a href="customers.html"><button type="button" class="w-100 mb-2 btn btn-lg btn-outline-primary">Vedi tutti i clienti</button></a>
-              <a href="merchants.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutti i venditori</button></a>
+              <a href="customers.html"><button type="button" class="w-100 mb-2 btn btn-lg btn-outline-primary">Vedi
+                  tutti i clienti</button></a>
+              <a href="merchants.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutti i
+                  venditori</button></a>
             </div>
           </div>
         </div>
@@ -85,7 +93,8 @@
                 <li>Credito totale ricaricato: 100000</li>
                 <li>Credito totale addebitato: 100000</li>
               </ul>
-              <a href="transactions.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi tutte</button></a>
+              <a href="transactions.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi
+                  tutte</button></a>
             </div>
           </div>
         </div>
@@ -93,7 +102,7 @@
     </main>
   </div>
   <script src="../static/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/js/jquery-3.7.0.min.js"></script> 
+  <script src="../static/js/jquery-3.7.0.min.js"></script>
   <script src="../static/js/main.js"></script>
 </body>
 

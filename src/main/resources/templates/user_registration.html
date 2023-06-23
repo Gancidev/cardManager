@@ -17,6 +17,11 @@
 </head>
 
 <body class="bg-light">
+  <script>
+    if (!sessionStorage.getItem('token') || sessionStorage.getItem('privileges')!="admin") {
+      window.location.href = "index.html";
+    }
+  </script>
   <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -26,9 +31,9 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
           <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
-          <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+          <li id="clienti"><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
           <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
-          <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
+          <li id="venditori"><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
         </ul>
         <div class="text-end">
           <button type="button" id="logout" class="btn btn-danger">Logout</button>

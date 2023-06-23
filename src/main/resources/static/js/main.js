@@ -44,6 +44,19 @@ $(document).ready(function () {
         });
     });
 
+    if(sessionStorage.getItem('privileges')!="admin"){
+        $("#utenti").remove();
+        $("#venditori").remove();
+        $("#clienti").remove();
+        $("#addCard").remove();
+        $(".deleteCard").remove();
+        $(".disableCard").remove();
+    }
+
+    if(sessionStorage.getItem('privileges')=="cliente"){
+        $("#addTransaction").remove();
+    }
+
 });
 
 

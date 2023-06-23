@@ -17,6 +17,11 @@
 </head>
 
 <body class="bg-light">
+    <script>
+        if (!sessionStorage.getItem('token')) {
+          window.location.href = "login.html";
+        }
+      </script>
     <header class="p-3 bg-dark text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -26,9 +31,9 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
                     <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
-                    <li><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+                    <li id="clienti"><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
                     <li><a href="#" class="nav-link px-2 text-secondary">Carte</a></li>
-                    <li><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
+                    <li id="venditori"><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
                 </ul>
                 <div class="text-end">
                     <button type="button" id="logout" class="btn btn-danger">Logout</button>
@@ -65,42 +70,46 @@
                         <thead>
                             <tr>
                                 <th scope="col">Numero Carta</th>
+                                <th scope="col">Scadenza</th>
                                 <th scope="col">Numero di Transazioni</th>
                                 <th scope="col">Email del proprietario</th>
                                 <th scope="col">Credito</th>
-                                <th scope="col">Disabilita</th>
-                                <th scope="col">Cancella</th>
+                                <th scope="col" class="disableCard">Disabilita</th>
+                                <th scope="col" class="deleteCard">Cancella</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">0000 **** **** 1111</th>
+                                <td>10/28</td>
                                 <td>2</td>
                                 <td>example1@you.com</td>
                                 <td>200.00&euro;</td>
-                                <td><input type="checkbox" id="disabled_merchant"></td>
-                                <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
+                                <td class="disableCard"><input type="checkbox" id="disabled_merchant"></td>
+                                <td class="deleteCard"><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                             <tr>
                                 <th scope="row">0000 **** **** 2222</th>
+                                <td>10/28</td>
                                 <td>5</td>
                                 <td>example2@you.com</td>
                                 <td>112.00&euro;</td>
-                                <td><input type="checkbox" id="disabled_merchant"></td>
-                                <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
+                                <td class="disableCard"><input type="checkbox" id="disabled_merchant"></td>
+                                <td class="deleteCard"><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                             <tr>
                                 <th scope="row">0000 **** **** 3333</th>
+                                <td>10/28</td>
                                 <td>20</td>
                                 <td>example3@you.com</td>
                                 <td>43451.00&euro;</td>
-                                <td><input type="checkbox" id="disabled_merchant"></td>
-                                <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
+                                <td class="disableCard"><input type="checkbox" id="disabled_merchant"></td>
+                                <td class="deleteCard"><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="add_button" href="card_registrarion.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Una Carta</button></a>
+                <a class="add_button" href="card_registration.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary" id="addCard">Aggiungi Una Carta</button></a>
             </div>
         </main>
     </div>
