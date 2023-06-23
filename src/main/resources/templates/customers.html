@@ -18,10 +18,10 @@
 
 <body class="bg-light" id="paginaClienti">
     <script>
-        if (!sessionStorage.getItem('token') || sessionStorage.getItem('privileges')!="admin") {
-          window.location.href = "login.html";
+        if (!sessionStorage.getItem('token') || sessionStorage.getItem('privileges') != "admin") {
+            window.location.href = "login.html";
         }
-      </script>
+    </script>
     <header class="p-3 bg-dark text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -49,18 +49,29 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="row filter">
-                        <div class="col-md-6">
-                            <label for="cc-cvv" class="form-label">Filtro Cliente</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="Mario" required>
+                        <div class="col-md-4">
+                            <label for="email" class="form-label">Filtro email</label>
+                            <input type="text" class="form-control" id="email" onkeyup="filter(this, 0,'tabellaClienti');" placeholder="mario@rossi.it">
                         </div>
-                        <div class="col-md-2">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Scarica Report"><i class="bi bi-box-arrow-down"></i></button>
+                        <div class="col-md-4">
+                            <label for="name" class="form-label">Filtro nome</label>
+                            <input type="text" class="form-control" id="name" onkeyup="filter(this, 1,'tabellaClienti');" placeholder="Mario Rossi">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="surname" class="form-label">Filtro cognome</label>
+                            <input type="text" class="form-control" id="surname" onkeyup="filter(this, 2,'tabellaClienti');" placeholder="Mario Rossi">
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" onclick="tableToCSV(1, 'clienti')"
+                                class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Scarica Report"><i
+                                    class="bi bi-box-arrow-down"></i></button>
                         </div>
                     </div>
                     <hr class="my-4">
-                    <table class="table">
+                    <table class="table" id="tabellaClienti">
                         <thead>
-                            <tr>
+                            <tr class="csv">
                                 <th scope="col">Email</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Cognome</th>
@@ -74,17 +85,19 @@
                                 <td id="name">Larry</td>
                                 <td id="surname">Norton</td>
                                 <td id="numberOfCards">2</td>
-                                <td id="deleteButton"><button class="btn btn-lg btn-primary" id="bottoneCancellazione" type="button"><i class="bi bi-trash2-fill"></i></button></td>
+                                <td id="deleteButton"><button class="btn btn-lg btn-primary" id="bottoneCancellazione"
+                                        type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="add_button" href="user_registration.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Aggiungi Un Cliente</button></a>
+                <a class="add_button" href="user_registration.html"><button type="button"
+                        class="w-100 btn btn-lg btn-outline-primary">Aggiungi Un Cliente</button></a>
             </div>
         </main>
     </div>
     <script src="../static/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/js/jquery-3.7.0.min.js"></script> 
+    <script src="../static/js/jquery-3.7.0.min.js"></script>
     <script src="../static/js/main.js"></script>
 </body>
 

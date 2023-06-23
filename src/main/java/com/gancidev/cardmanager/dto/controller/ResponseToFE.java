@@ -2,6 +2,7 @@ package com.gancidev.cardmanager.dto.controller;
 
 import java.util.List;
 
+import com.gancidev.cardmanager.dto.service.CardToFE;
 import com.gancidev.cardmanager.model.Card;
 import com.gancidev.cardmanager.model.Counter;
 import com.gancidev.cardmanager.model.Session;
@@ -21,7 +22,7 @@ public class ResponseToFE {
     private Boolean error = Boolean.FALSE;
     private String errorMessage;
     private List<Counter> counters;
-    private List<Card> cards;
+    private List<CardToFE> cards;
     private List<User> customers;
     private List<User> merchants;
     private List<User> admin;
@@ -52,7 +53,7 @@ public class ResponseToFE {
         this.errorMessage = errorMessage;
     }
 
-    public ResponseToFE(List<Counter> counters, List<Card> cards, List<User> customers, List<User> merchants){
+    public ResponseToFE(List<Counter> counters, List<CardToFE> cards, List<User> customers, List<User> merchants){
         if(counters!=null){
             this.counters = counters;
         }

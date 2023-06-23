@@ -50,47 +50,35 @@
                 <div class="col-md-12 col-lg-12">
                     <div class="row filter">
                         <div class="col-md-2">
-                            <label for="country" class="form-label">Cliente</label>
-                            <select class="form-select" id="customer" required>
-                                <option value="">Scegli...</option>
-                                <option value="1">Cliente 1</option>
-                                <option value="2">Cliente 2</option>
-                            </select>
+                            <label for="customer" class="form-label">Cliente</label>
+                            <input type="text" class="form-control" id="customer" onkeyup="filter(this, 0,'tabellaTransazioni');" placeholder="Mario Rossi">
                         </div>
                         <div class="col-md-2">
-                            <label for="country" class="form-label">Venditore</label>
-                            <select class="form-select" id="customer" required>
-                                <option value="">Scegli...</option>
-                                <option value="1">Venditore 1</option>
-                                <option value="2">Venditore 2</option>
-                            </select>
+                            <label for="merchant" class="form-label">Venditore</label>
+                            <input type="text" class="form-control" id="merchant" onkeyup="filter(this, 1,'tabellaTransazioni');" placeholder="Mario Rossi">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cardNumber" class="form-label">Numero di Carta</label>
+                            <input type="text" class="form-control" id="cardNumber" onkeyup="filter(this, 2,'tabellaTransazioni');" placeholder="0000111122223333">
                         </div>
                         <div class="col-md-2">
-                            <label for="country" class="form-label">Carta</label>
-                            <select class="form-select" id="customer" required>
-                                <option value="">Scegli...</option>
-                                <option value="1">Carta 1</option>
-                                <option value="2">Carta 2</option>
-                            </select>
+                            <label for="minCredit" class="form-label">Prezzo Minimo</label>
+                            <input type="number" class="form-control" id="minCredit" placeholder="10000.00" required>
                         </div>
                         <div class="col-md-2">
-                            <label for="cc-cvv" class="form-label">Prezzo Minimo</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                            <label for="maxCredit" class="form-label">Prezzo Massimo</label>
+                            <input type="number" class="form-control" id="maxCredit" placeholder="-10000.00" required>
                         </div>
-                        <div class="col-md-2">
-                            <label for="cc-cvv" class="form-label">Prezzo Massimo</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
+                        <div class="col-md-1">
+                            <button type="button" onclick="tableToCSV(0, 'transazioni')" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="Scarica Report"><i
                                     class="bi bi-box-arrow-down"></i></button>
                         </div>
                     </div>
                     <hr class="my-4">
-                    <table class="table">
+                    <table class="table" id="tabellaTransazioni">
                         <thead>
-                            <tr>
+                            <tr class="csv">
                                 <th scope="col">Cliente</th>
                                 <th scope="col">Venditore</th>
                                 <th scope="col">Carta</th>

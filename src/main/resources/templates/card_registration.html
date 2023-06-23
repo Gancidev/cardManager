@@ -52,37 +52,30 @@
                         <h4 class="mb-3">Informazioni della Carta</h4>
                         <div class="row gy-3">
                             <div class="col-md-5">
-                                <label for="cc-name" class="form-label">Nome sulla carta</label>
-                                <input type="text" class="form-control" id="cc-name" placeholder="Mario Rossi" required>
-                                <small class="text-muted">Il nome completo è presente sulla carta stessa</small>
+                                <label for="cardNumber" class="form-label">Numero</label>
+                                <input type="text" class="form-control" id="cardNumber" placeholder="0000 1111 2222 3333" required>
                             </div>
                             <div class="col-md-4">
-                                <label for="cc-number" class="form-label">Numero</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="0000 1111 2222 3333" required>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="country" class="form-label">Cliente</label>
+                                <label for="customer" class="form-label">Cliente</label>
                                 <select class="form-select" id="customer" required>
-                                    <option value="">Scegli...</option>
-                                    <option value="1">Cliente 1</option>
-                                    <option value="2">Cliente 2</option>
+                                    <option id="scelta" value="">Scegli...</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <label for="cc-expiration" class="form-label">Scadenza</label>
-                                <input type="text" class="form-control" id="cc-expiration" placeholder="05/27" required>
+                            <div class="col-md-3">
+                                <label for="expiration" class="form-label">Scadenza</label>
+                                <input type="text" class="form-control" id="expiration" placeholder="05/27" required>
                             </div>
                             <div class="col-md-3">
-                                <label for="cc-cvv" class="form-label">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="123" required>
+                                <label for="cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cvv" placeholder="123" required>
                             </div>
                             <div class="col-md-3">
-                                <label for="cc-cvv" class="form-label">Credito Iniziale</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                                <label for="credit" class="form-label">Credito Iniziale</label>
+                                <input type="number" class="form-control" id="credit" placeholder="0.00" required>
                             </div>
                         </div>
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Registra</button>
+                        <button class="w-100 btn btn-primary btn-lg" id="inviaNuovaCarta" type="button">Registra</button>
                     </form>
                 </div>
             </div>

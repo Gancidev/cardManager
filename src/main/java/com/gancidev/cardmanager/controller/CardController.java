@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gancidev.cardmanager.dto.controller.CardRequest;
 import com.gancidev.cardmanager.dto.controller.ResponseToFE;
+import com.gancidev.cardmanager.dto.service.CardToFE;
 import com.gancidev.cardmanager.model.Card;
 import com.gancidev.cardmanager.model.Session;
 import com.gancidev.cardmanager.service.CardService;
@@ -40,7 +41,7 @@ public class CardController extends AbstractController{
     public ResponseEntity<ResponseToFE> getListOfCards() {
         Session sessione = getSession();
         if(sessione!=null){
-            List<Card> card = this.cardService.getListOfCards(sessione.getUser().getId());
+            List<CardToFE> card = this.cardService.getListOfCards(sessione.getUser().getId());
             return ResponseEntity.ok(new ResponseToFE(null, card, null, null));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
@@ -51,7 +52,7 @@ public class CardController extends AbstractController{
     public ResponseEntity<ResponseToFE> getAllCards() {
         Session sessione = getSession();
         if(sessione!=null && sessione.getPrivileges().equals("admin")){
-            List<Card> card = this.cardService.getAllCards();
+            List<CardToFE> card = this.cardService.getAllCards();
             return ResponseEntity.ok(new ResponseToFE(null, card, null, null));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));

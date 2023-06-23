@@ -1,5 +1,6 @@
 package com.gancidev.cardmanager.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.gancidev.cardmanager.dto.controller.CardRequest;
+import com.gancidev.cardmanager.dto.service.CardToFE;
 import com.gancidev.cardmanager.model.Card;
+import com.gancidev.cardmanager.model.User;
 import com.gancidev.cardmanager.repository.CardRepository;
 import com.gancidev.cardmanager.repository.TransactionRepository;
+import com.gancidev.cardmanager.repository.UserRepository;
 
 @Service
 public class CardService {
@@ -20,6 +24,9 @@ public class CardService {
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /* Servizio per il recupero dei dati di una carta*/
     public Card getByNumber(String number) {
@@ -32,13 +39,29 @@ public class CardService {
     }
 
     /* Servizio per il recupero delle carte di un cliente*/
-    public List<Card> getListOfCards(Long user_id) {
-        return this.cardRepository.getCardByUserId(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public List<CardToFE> getListOfCards(Long user_id) {
+        List<Card> listCards =  this.cardRepository.getCardByUserId(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        List<CardToFE> listCardsCompleted = new ArrayList<>();
+        listCards.forEach(card->{
+            CardToFE tmp = new CardToFE(card);
+            User tmpCustomer = this.userRepository.findById(card.getUser_id()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            tmp.setEmail(tmpCustomer.getEmail());
+            listCardsCompleted.add(tmp);
+        });
+        return listCardsCompleted;
     }
 
     /* Servizio per il recupero delle carte di un cliente*/
-    public List<Card> getAllCards() {
-        return this.cardRepository.getAllCard().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public List<CardToFE> getAllCards() {
+        List<Card> listCards =  this.cardRepository.getAllCard().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        List<CardToFE> listCardsCompleted = new ArrayList<>();
+        listCards.forEach(card->{
+            CardToFE tmp = new CardToFE(card);
+            User tmpCustomer = this.userRepository.findById(card.getUser_id()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            tmp.setEmail(tmpCustomer.getEmail());
+            listCardsCompleted.add(tmp);
+        });
+        return listCardsCompleted;
     }
 
     /* Servizio per il recupero del credito di una carta*/

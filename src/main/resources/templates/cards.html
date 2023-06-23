@@ -49,28 +49,32 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="row filter">
-                        <div class="col-md-6">
-                            <label for="cc-cvv" class="form-label">Filtro Carta</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="Mario" required>
+                        <div class="col-md-4">
+                            <label for="cardNumber" class="form-label">Filtro Carta</label>
+                            <input type="text" class="form-control" id="cardNumber" onkeyup="filter(this, 0,'tabellaCarte');" placeholder="00001111222233334444">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="email" class="form-label">Email proprietario</label>
+                            <input type="text" class="form-control" id="email" onkeyup="filter(this, 2,'tabellaCarte');" placeholder="mario@rossi.it">
                         </div>
                         <div class="col-md-2">
-                            <label for="cc-cvv" class="form-label">Credito Massimo</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                            <label for="maxCredit" class="form-label">Credito Massimo</label>
+                            <input type="text" class="form-control" id="maxCredit" placeholder="10000.00">
                         </div>
                         <div class="col-md-2">
-                            <label for="cc-cvv" class="form-label">Credito Minimo</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                            <label for="minCredit" class="form-label">Credito Minimo</label>
+                            <input type="text" class="form-control" id="minCredit" placeholder="-10000.00">
                         </div>
-                        <div class="col-md-2">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
+                        <div class="col-md-1">
+                            <button type="button" onclick="tableToCSV(2, 'carte')" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="Scarica Report"><i
                                     class="bi bi-box-arrow-down"></i></button>
                         </div>
                     </div>
                     <hr class="my-4">
-                    <table class="table">
+                    <table id="tabellaCarte" class="table">
                         <thead>
-                            <tr>
+                            <tr class="csv">
                                 <th scope="col">Numero Carta</th>
                                 <th scope="col">Scadenza</th>
                                 <th scope="col">Numero di Transazioni</th>
