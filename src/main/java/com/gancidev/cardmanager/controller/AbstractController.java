@@ -1,6 +1,7 @@
 package com.gancidev.cardmanager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -10,6 +11,7 @@ import com.gancidev.cardmanager.service.SessionService;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
+@CrossOrigin(originPatterns = "*", allowCredentials = "true", allowedHeaders = "*")
 public class AbstractController {
 
     @Autowired

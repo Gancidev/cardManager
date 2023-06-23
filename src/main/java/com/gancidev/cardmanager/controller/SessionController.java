@@ -3,6 +3,7 @@ package com.gancidev.cardmanager.controller;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.gancidev.cardmanager.model.User;
 
 @RestController
 @RequestMapping("session")
+@CrossOrigin(originPatterns = "*", allowCredentials = "true", allowedHeaders = "*")
 public class SessionController extends AbstractController{
 
 

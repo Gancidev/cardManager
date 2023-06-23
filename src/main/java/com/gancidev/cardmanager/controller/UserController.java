@@ -2,6 +2,7 @@ package com.gancidev.cardmanager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import com.gancidev.cardmanager.service.UserService;
 
 @RestController
 @RequestMapping("user")
+@CrossOrigin(originPatterns = "*", allowCredentials = "true", allowedHeaders = "*")
 public class UserController extends AbstractController{
 
     @Autowired

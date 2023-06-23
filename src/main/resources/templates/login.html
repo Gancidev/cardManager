@@ -17,24 +17,28 @@
   <link href="../static/css/login.css" rel="stylesheet">
 </head>
 
-<body class="text-center">
+<body class="text-center" id="pagetitle">
+  <div id="pagetitle"></div>
   <main class="form-signin">
     <form>
       <img class="mb-4" src="../static/assets/logo_nero.png" alt="" width="300">
       <h1 class="h3 mb-3 fw-normal">Form di accesso</h1>
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="nome@esempio.com">
-        <label for="floatingInput">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="nome@esempio.com">
+        <label for="email">Email</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password">
+        <label for="password">Password</label>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Accedi</button>
+      <button class="w-100 btn btn-lg btn-primary" id="accedi" type="button">Accedi</button>
     </form>
     <hr class="my-4">
     <a href="check_credit.html">Verifica il credito di una carta</a>
   </main>
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/js/jquery-3.7.0.min.js"></script> 
+  <script src="../static/js/main.js"></script>
 </body>
 
 </html>
