@@ -26,12 +26,10 @@ public class CardController extends AbstractController{
 
     /* API per il recupero dei dati di una carta*/
     @GetMapping("{number}")
-    public ResponseEntity<ResponseToFE> getByNumber(@PathVariable("number") String id) {
-        Card card = this.cardService.getByNumber(id);
-        card.setBlocked(null);
-        card.setCard_id(null);
-        card.setTransactions(null);
-        card.setUser_id(null);
+    public ResponseEntity<ResponseToFE> getByNumber(@PathVariable("number") String number) {
+        Double credit = this.cardService.getCardCredit(number);
+        Card card = new Card();
+        card.setCredit(credit);
         return ResponseEntity.ok(new ResponseToFE(card));
     }
 

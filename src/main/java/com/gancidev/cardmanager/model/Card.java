@@ -24,6 +24,10 @@ public class Card {
     private Long card_id;
     @Column(name = "number", length = 16)
     private String number;
+    @Column(name = "expiration", length = 10)
+    private String expiration;
+    @Column(name = "cvv", length = 3)
+    private String cvv;
     private Double credit;
     private Long user_id;
     private Boolean blocked;

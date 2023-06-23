@@ -20,6 +20,11 @@ public class CardService {
         return this.cardRepository.findByNumber(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    /* Servizio per il recupero dei dati di una carta*/
+    public Double getCardCredit(String number) {
+        return this.cardRepository.getCardCredit(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     /* Servizio per la creazione di una carta*/
     public Card create(CardRequest dto) {
         Card card = new Card();
