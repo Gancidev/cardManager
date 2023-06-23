@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 public class Counter {
 
-    private String referecence;
+    private String reference;
 
     private Integer counter;
     private Double amountAccredit;
@@ -22,7 +22,7 @@ public class Counter {
     private Integer counterMerchants;
 
     public Counter(){
-        this.referecence = TypeEnum.TRANSACTION.toString();
+        this.reference = TypeEnum.TRANSACTION.toString();
         this.counter = 0;
         this.amountAccredit = 0.0;
         this.amountPayments = 0.0;
@@ -30,7 +30,7 @@ public class Counter {
 
 
     public Counter(List<Double> counterAmount, Integer counter){
-        this.referecence = TypeEnum.TRANSACTION.toString();
+        this.reference = TypeEnum.TRANSACTION.toString();
         this.counter = counter;
         try {
             if(counterAmount.get(0)>0){
@@ -45,12 +45,12 @@ public class Counter {
     }
 
     public Counter(Integer counter){
-        this.referecence = TypeEnum.CARD.toString();
+        this.reference = TypeEnum.CARD.toString();
         this.counter = counter;
     }
 
     public Counter(Integer counterAdmin, Integer counterMerchants, Integer counterCustomers){
-        this.referecence = TypeEnum.USER.toString();
+        this.reference = TypeEnum.USER.toString();
         this.counterAdmin = counterAdmin;
         this.counterMerchants = counterMerchants;
         this.counterCustomers = counterCustomers;
