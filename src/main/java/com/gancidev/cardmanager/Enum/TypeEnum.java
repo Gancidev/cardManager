@@ -3,7 +3,10 @@ package com.gancidev.cardmanager.Enum;
 public enum TypeEnum {
 
     PAYMENT("payment"),
-	ACCREDIT("accredit");
+	ACCREDIT("accredit"),
+	USER("accredit"),
+	CARD("accredit"),
+	TRANSACTION("accredit");
 	
 	private String type;
 	

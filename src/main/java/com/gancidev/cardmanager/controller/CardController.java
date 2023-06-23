@@ -1,5 +1,7 @@
 package com.gancidev.cardmanager.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,6 +35,28 @@ public class CardController extends AbstractController{
         return ResponseEntity.ok(new ResponseToFE(card));
     }
 
+    /* API per il recupero delle carte di un cliente*/
+    @GetMapping("/list")
+    public ResponseEntity<ResponseToFE> getListOfCards() {
+        Session sessione = getSession();
+        if(sessione!=null){
+            List<Card> card = this.cardService.getListOfCards(sessione.getUser().getId());
+            return ResponseEntity.ok(new ResponseToFE(null, card, null, null));
+        }
+        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
+    }
+
+    /* API per il recupero delle carte di un cliente*/
+    @GetMapping("/listAll")
+    public ResponseEntity<ResponseToFE> getAllCards() {
+        Session sessione = getSession();
+        if(sessione!=null && sessione.getPrivileges().equals("admin")){
+            List<Card> card = this.cardService.getAllCards();
+            return ResponseEntity.ok(new ResponseToFE(null, card, null, null));
+        }
+        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
+    }
+
     /* API per la creazione di una carta*/
     @PostMapping("/create")
     public ResponseEntity<ResponseToFE> create(@RequestBody CardRequest dto) {
@@ -53,6 +77,16 @@ public class CardController extends AbstractController{
         Session sessione = getSession();
         if(sessione!=null && sessione.getPrivileges().equals("admin")){
             return ResponseEntity.ok(new ResponseToFE(this.cardService.lockUnlockCard(dto)));
+        }
+        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Errore si prega di riprovare"));
+    }
+
+    /* API per eliminare una carta*/
+    @PostMapping("/delete")
+    public ResponseEntity<ResponseToFE> deleteCard(@RequestBody CardRequest dto) {
+        Session sessione = getSession();
+        if(sessione!=null && sessione.getPrivileges().equals("admin")){
+            return ResponseEntity.ok(new ResponseToFE(this.cardService.deleteCard(dto)));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Errore si prega di riprovare"));
     }

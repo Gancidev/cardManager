@@ -31,29 +31,18 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void blockUnblockUser(@Param("email") String email);
 
 
+    /* Query per il recupero del numero di utenti per ruolo*/
+    @Query(value="SELECT COUNT(*) FROM user WHERE role = :role", nativeQuery = true)
+    Optional<Integer> numberOfUserPerRole(@Param("role") String role);
 
+    /* Query per il recupero del numero di utenti per ruolo*/
+    @Query(value="SELECT * FROM user WHERE role = :role", nativeQuery = true)
+    Optional<List<User>> getListByRole(@Param("role") String role);
 
+    /* Query per eliminare un'utente*/
+    @Modifying
+    @Transactional
+    @Query(value="DELETE FROM user WHERE id = :id", nativeQuery = true)
+    void deleteUser(@Param("id") Long id);
 
-
-
-
-
-
-
-
-
-    
-    /* IDEE PER POSSIBILI REPORT PARAMETRIZZATI PER L'ADMIN*/
-
-    /* Query per il recupero degli utenti del ruolo scelto*/
-    @Query(value="SELECT * FROM user where role = :role", nativeQuery = true)
-    Optional<List<User>> reportUserByRole(@Param("role") String role);
-
-    /* Query per il recupero degli utenti non bloccati o bloccati a seconda del parametro scelto*/
-    @Query(value="SELECT * FROM user where disabled = :disabled", nativeQuery = true)
-    Optional<List<User>> reportUserByStatus(@Param("disabled") Integer disabled);
-
-    /* Query per il recupero dei crediti totali degli utenti registrati*/
-    @Query(value="SELECT user.*, SUM(card.credit) FROM user, card WHERE user.id = card.user_id GROUP BY user.id; ", nativeQuery = true)
-    Optional<List<User>> reportUserCredit();
 }

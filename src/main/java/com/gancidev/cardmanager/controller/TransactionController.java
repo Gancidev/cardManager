@@ -58,22 +58,18 @@ public class TransactionController extends AbstractController{
 
 
     /* API per il recupero delle transazioni di un negoziante*/
-    @GetMapping("/report/myTransaction")
+    @GetMapping("/list")
     public ResponseEntity<List<Transaction>> reportPersonalTransaction() {
         Session sessione = getSession();
-        if(sessione!=null && (sessione.getPrivileges().equals("admin") || sessione.getPrivileges().equals("venditore"))){
-            return ResponseEntity.ok(this.transactionService.reportPersonalTransaction(sessione.getUser().getId()));
-        }
-        return ResponseEntity.ok(new ArrayList<>());
-    }
-
-
-    /* API per il recupero delle ultime 10 transazioni di un cliente*/
-    @GetMapping("/report/myLastTransaction")
-    public ResponseEntity<List<Transaction>> reportMyLastTransaction() {
-        Session sessione = getSession();
         if(sessione!=null){
-            return ResponseEntity.ok(this.transactionService.reportMyLastTransaction(sessione.getUser().getId()));
+            List<Transaction> listTransactions = new ArrayList<>();
+            if(sessione.getPrivileges().equals("admin") || sessione.getPrivileges().equals("venditore")){
+                //Transazioni di cui è l'owner ovvero le ha create lui
+                listTransactions = this.transactionService.reportPersonalTransaction(sessione.getUser().getId());
+            }
+            //Transazioni di cui è il customer
+            listTransactions.addAll(this.transactionService.reportMyTransaction(sessione.getUser().getId()));
+            return ResponseEntity.ok(listTransactions);
         }
         return ResponseEntity.ok(new ArrayList<>());
     }

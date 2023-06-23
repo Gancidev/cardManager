@@ -10,4 +10,6 @@ public class CardRequest {
     private String number;
     private Double credit;
     private Long user_id;
+    private String expiration;
+    private String cvv;
 }

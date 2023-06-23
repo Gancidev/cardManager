@@ -1,5 +1,7 @@
 package com.gancidev.cardmanager.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.gancidev.cardmanager.dto.controller.CardRequest;
 import com.gancidev.cardmanager.model.Card;
 import com.gancidev.cardmanager.repository.CardRepository;
+import com.gancidev.cardmanager.repository.TransactionRepository;
 
 @Service
 public class CardService {
@@ -15,12 +18,30 @@ public class CardService {
     @Autowired
     private CardRepository cardRepository;
 
+    @Autowired
+    private TransactionRepository transactionRepository;
+
     /* Servizio per il recupero dei dati di una carta*/
     public Card getByNumber(String number) {
         return this.cardRepository.findByNumber(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    /* Servizio per il recupero dei dati di una carta*/
+    /* Servizio per il recupero del numero di carte di un cliente*/
+    public Integer getNumberOfMyCard(Long user_id) {
+        return this.cardRepository.numberOfMyCard(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    /* Servizio per il recupero delle carte di un cliente*/
+    public List<Card> getListOfCards(Long user_id) {
+        return this.cardRepository.getCardByUserId(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    /* Servizio per il recupero delle carte di un cliente*/
+    public List<Card> getAllCards() {
+        return this.cardRepository.getAllCard().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    /* Servizio per il recupero del credito di una carta*/
     public Double getCardCredit(String number) {
         return this.cardRepository.getCardCredit(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
@@ -31,6 +52,8 @@ public class CardService {
         card.setNumber(dto.getNumber());
         card.setCredit(dto.getCredit());
         card.setUser_id(dto.getUser_id());
+        card.setExpiration(dto.getExpiration());
+        card.setCvv(dto.getCvv());
         card.setBlocked(Boolean.FALSE);
         try {
             return this.cardRepository.save(card);
@@ -39,6 +62,17 @@ public class CardService {
                 return new Card();
             }
             return null;
+        }
+    }
+
+    /* Servizio per la cancellazione della sessione*/
+    public Boolean deleteCard(CardRequest dto) {
+        try {
+            this.transactionRepository.deleteTransaction(dto.getNumber());
+            this.cardRepository.deleteCard(dto.getNumber());
+            return Boolean.FALSE;
+        } catch (Exception e) {
+            return Boolean.TRUE;
         }
     }
 

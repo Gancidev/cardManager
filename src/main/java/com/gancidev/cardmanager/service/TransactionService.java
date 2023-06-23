@@ -34,13 +34,23 @@ public class TransactionService {
         }
     }
 
+    /* Servizio per il recupero del numero delle transazioni totali*/
+    public List<Double> getCounterOfTransactions(Long user_id) {
+        return this.transactionRepository.getCounter(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
     /* Servizio per il recupero delle transazioni di un negoziante*/
     public List<Transaction> reportPersonalTransaction(Long user_shop_id) {
         return this.transactionRepository.reportById(user_shop_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    /* Servizio per il recupero delle ultime 10 transazioni di un cliente*/
-    public List<Transaction> reportMyLastTransaction(Long user_id) {
-        return this.transactionRepository.reportMyLastTransaction(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    /* Servizio per il recupero del numero transazioni di un cliente*/
+    public Integer getNumberoOfTransaction(Long user_id) {
+        return this.transactionRepository.numberOfMyTransaction(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    /* Servizio per il recupero delle transazioni di un cliente*/
+    public List<Transaction> reportMyTransaction(Long user_id) {
+        return this.transactionRepository.reportMyTransaction(user_id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }
