@@ -16,12 +16,12 @@
     <link href="../static/css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" id="carte">
     <script>
         if (!sessionStorage.getItem('token')) {
-          window.location.href = "login.html";
+            window.location.href = "login.html";
         }
-      </script>
+    </script>
     <header class="p-3 bg-dark text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -62,7 +62,9 @@
                             <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Scarica Report"><i class="bi bi-box-arrow-down"></i></button>
+                            <button type="button" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Scarica Report"><i
+                                    class="bi bi-box-arrow-down"></i></button>
                         </div>
                     </div>
                     <hr class="my-4">
@@ -78,43 +80,27 @@
                                 <th scope="col" class="deleteCard">Cancella</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">0000 **** **** 1111</th>
-                                <td>10/28</td>
-                                <td>2</td>
-                                <td>example1@you.com</td>
-                                <td>200.00&euro;</td>
-                                <td class="disableCard"><input type="checkbox" id="disabled_merchant"></td>
-                                <td class="deleteCard"><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">0000 **** **** 2222</th>
-                                <td>10/28</td>
-                                <td>5</td>
-                                <td>example2@you.com</td>
-                                <td>112.00&euro;</td>
-                                <td class="disableCard"><input type="checkbox" id="disabled_merchant"></td>
-                                <td class="deleteCard"><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">0000 **** **** 3333</th>
-                                <td>10/28</td>
-                                <td>20</td>
-                                <td>example3@you.com</td>
-                                <td>43451.00&euro;</td>
-                                <td class="disableCard"><input type="checkbox" id="disabled_merchant"></td>
-                                <td class="deleteCard"><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
+                        <tbody id="listaCarte">
+                            <tr id="clone_carta_vacante" style="display: none;">
+                                <th id="cardNumber" scope="row">0000 **** **** 1111</th>
+                                <td id="expiration">10/28</td>
+                                <td id="transactionsNumber">2</td>
+                                <td id="ownerEmails">example1@you.com</td>
+                                <td id="credit">200.00&euro;</td>
+                                <td class="disableCard"><input type="checkbox" id="checkboxAbilitazione"></td>
+                                <td class="deleteCard"><button class="btn btn-lg btn-primary" id="bottoneCancellazione"
+                                        type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="add_button" href="card_registration.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary" id="addCard">Aggiungi Una Carta</button></a>
+                <a class="add_button" href="card_registration.html"><button type="button"
+                        class="w-100 btn btn-lg btn-outline-primary" id="addCard">Aggiungi Una Carta</button></a>
             </div>
         </main>
     </div>
     <script src="../static/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/js/jquery-3.7.0.min.js"></script> 
+    <script src="../static/js/jquery-3.7.0.min.js"></script>
     <script src="../static/js/main.js"></script>
 </body>
 

@@ -52,19 +52,19 @@
                         <h4 class="mb-3">Informazioni della carta</h4>
                         <div class="row gy-3">
                             <div class="col-md-4">
-                                <label for="cc-number" class="form-label">Numero</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="0000 1111 2222 3333"
+                                <label for="cardNumber" class="form-label">Numero</label>
+                                <input type="text" class="form-control" id="cardNumber" placeholder="0000 1111 2222 3333"
                                     required>
                             </div>
                             <hr class="my-4">
                             <h4>Informazioni sull&#39;operazione</h4>
                             <div class="col-md-3">
-                                <label for="cc-cvv" class="form-label">Credito</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="0.0" required>
+                                <label for="credit" class="form-label">Credito</label>
+                                <input type="number" class="form-control" id="credit" placeholder="0.00" required>
                             </div>
                             <div class="col-md-3">
-                                <label for="country" class="form-label">Tipo di operazione</label>
-                                <select class="form-select" id="customer" required>
+                                <label for="operationType" class="form-label">Tipo di operazione</label>
+                                <select class="form-select" id="operationType" required>
                                     <option value="">Scegli...</option>
                                     <option value="accredit">Ricarica</option>
                                     <option value="payment">Pagamento</option>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Aggiungi Transazione</button>
+                        <button class="w-100 btn btn-primary btn-lg" id="inviaNuovaTransazione" type="button">Aggiungi Transazione</button>
                     </form>
                 </div>
             </div>

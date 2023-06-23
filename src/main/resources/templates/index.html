@@ -16,7 +16,7 @@
   <link href="../static/css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" id="dashboard">
   <script>
     if (!sessionStorage.getItem('token')) {
       window.location.href = "login.html";
@@ -31,8 +31,8 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
           <li><a href="transactions.html" class="nav-link px-2 text-white">Transazioni</a></li>
-          <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
           <li id="clienti"><a href="customers.html" class="nav-link px-2 text-white">Clienti</a></li>
+          <li><a href="cards.html" class="nav-link px-2 text-white">Carte</a></li>
           <li id="venditori"><a href="merchants.html" class="nav-link px-2 text-white">Venditori</a></li>
         </ul>
         <div class="text-end">
@@ -51,11 +51,11 @@
         <div class="col">
           <div class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header py-3">
-              <h4 class="my-0 fw-normal">Carte</h4>
+              <h4 class="my-0 fw-normal">Carte (personali)</h4>
             </div>
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Numero di carte: 10</li>
+                <li id="numeroCarte"></li>
               </ul>
               <a href="cards.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi
                   tutte</button></a>
@@ -69,11 +69,10 @@
             </div>
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Numero di utenti: 10</li>
-                <li>FILTRO PER FARLE VEDERE SOLO ALL'ADMIN</li>
-                <li>Admin: 100000</li>
-                <li>Clienti: 100000</li>
-                <li>Venditori: 100000</li>
+                <li id="numeroUtentiTotale"></li>
+                <li id="numeroAdmin"></li>
+                <li id="numeroCustomers"></li>
+                <li id="numeroMerchant"></li>
               </ul>
               <a href="customers.html"><button type="button" class="w-100 mb-2 btn btn-lg btn-outline-primary">Vedi
                   tutti i clienti</button></a>
@@ -85,13 +84,13 @@
         <div class="col">
           <div class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header py-3">
-              <h4 class="my-0 fw-normal">Transazioni</h4>
+              <h4 class="my-0 fw-normal">Transazioni (personali)</h4>
             </div>
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
-                <li>Numero di transazioni: 10</li>
-                <li>Credito totale ricaricato: 100000</li>
-                <li>Credito totale addebitato: 100000</li>
+                <li id="numeroTransazioni"></li>
+                <li id="creditoRicaricatoTotale"></li>
+                <li id="creditoPagatoTotale"></li>
               </ul>
               <a href="transactions.html"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Vedi
                   tutte</button></a>

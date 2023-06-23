@@ -16,9 +16,9 @@
     <link href="../static/css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" id="paginaClienti">
     <script>
-        if (!sessionStorage.getItem('token')) {
+        if (!sessionStorage.getItem('token') || sessionStorage.getItem('privileges')!="admin") {
           window.location.href = "login.html";
         }
       </script>
@@ -68,27 +68,13 @@
                                 <th scope="col">Cancella</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">example1@you.com</th>
-                                <td>Larry</td>
-                                <td>Norton</td>
-                                <td>2</td>
-                                <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">example2@you.com</th>
-                                <td>Larry</td>
-                                <td>Norton</td>
-                                <td>1</td>
-                                <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">example3@you.com</th>
-                                <td>Larry</td>
-                                <td>Norton</td>
-                                <td>4</td>
-                                <td><button class="btn btn-lg btn-primary" type="button"><i class="bi bi-trash2-fill"></i></button></td>
+                        <tbody id="listaClienti">
+                            <tr id="clone_cliente_vacante" style="display: none;">
+                                <th id="email" scope="row">example1@you.com</th>
+                                <td id="name">Larry</td>
+                                <td id="surname">Norton</td>
+                                <td id="numberOfCards">2</td>
+                                <td id="deleteButton"><button class="btn btn-lg btn-primary" id="bottoneCancellazione" type="button"><i class="bi bi-trash2-fill"></i></button></td>
                             </tr>
                         </tbody>
                     </table>

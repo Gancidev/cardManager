@@ -16,7 +16,7 @@
     <link href="../static/css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body class="bg-light" id="transazioni">
     <script>
         if (!sessionStorage.getItem('token')) {
             window.location.href = "login.html";
@@ -97,24 +97,12 @@
                                 <th scope="col">Prezzo</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Mark</th>
-                                <td>Thornton</td>
-                                <td>0000 **** **** 1111</td>
-                                <td>10.00&euro;</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Jacob</th>
-                                <td>Thornton</td>
-                                <td>0000 **** **** 1111</td>
-                                <td>10.00&euro;</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Larry</th>
-                                <td>Bird</td>
-                                <td>0000 **** **** 1111</td>
-                                <td>10.00&euro;</td>
+                        <tbody id="listaTransazioni">
+                            <tr id="clone_transazioni_vacante" style="display: none;">
+                                <th id="customer" scope="row"></th>
+                                <td id="merchant"></td>
+                                <td id="cardNumber"></td>
+                                <td id="credit"></td>
                             </tr>
                         </tbody>
                     </table>

@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.gancidev.cardmanager.dto.controller.CardRequest;
 import com.gancidev.cardmanager.dto.controller.ResponseToFE;
 import com.gancidev.cardmanager.dto.controller.TransactionRequest;
+import com.gancidev.cardmanager.dto.service.TransactionToFE;
 import com.gancidev.cardmanager.model.Card;
 import com.gancidev.cardmanager.model.Session;
 import com.gancidev.cardmanager.model.Transaction;
@@ -59,10 +60,10 @@ public class TransactionController extends AbstractController{
 
     /* API per il recupero delle transazioni di un negoziante*/
     @GetMapping("/list")
-    public ResponseEntity<List<Transaction>> reportPersonalTransaction() {
+    public ResponseEntity<List<TransactionToFE>> reportPersonalTransaction() {
         Session sessione = getSession();
         if(sessione!=null){
-            List<Transaction> listTransactions = new ArrayList<>();
+            List<TransactionToFE> listTransactions = new ArrayList<>();
             if(sessione.getPrivileges().equals("admin") || sessione.getPrivileges().equals("venditore")){
                 //Transazioni di cui è l'owner ovvero le ha create lui
                 listTransactions = this.transactionService.reportPersonalTransaction(sessione.getUser().getId());
