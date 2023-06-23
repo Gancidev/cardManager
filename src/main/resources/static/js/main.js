@@ -25,9 +25,22 @@ $(document).ready(function () {
     });
 
     $('#logout').click(function () {
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('privileges');
-        setTimeout(function(){window.location.href = "login.html";},1000);
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:8080/session/logout",
+            headers: {
+                "SESSION-TOKEN": sessionStorage.getItem('token')
+            },
+            success: function (risposta) {
+                sessionStorage.removeItem('token');
+                sessionStorage.removeItem('privileges');
+                setTimeout(function(){window.location.href = "login.html";},1000);
+            },
+            error: function (stato) {
+                $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                setTimeout(function(){$(".btn-close")[0].click()},4000);
+            }
+        });
     });
 
     $('#checkCredito').click(function () {
