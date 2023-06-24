@@ -86,30 +86,50 @@ $(document).ready(function () {
     }
 
     if ($("#transazioni").length > 0) {
-        $.ajax({
-            method: "GET",
-            url: "http://localhost:8080/transaction/list",
-            headers: {
-                "SESSION-TOKEN": sessionStorage.getItem('token')
-            },
-            success: function (risposta) {
-                if(risposta.length==0){
-                    $("#contenitore").append("<div class=\"alert alert-warning alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Non sono presenti transazioni!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+        if (sessionStorage.getItem('privileges') != "admin") {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/transaction/list",
+                headers: {
+                    "SESSION-TOKEN": sessionStorage.getItem('token')
+                },
+                success: function (risposta) {
+                    if(risposta.length==0){
+                        $("#contenitore").append("<div class=\"alert alert-warning alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Non sono presenti transazioni!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                    }
+                    mappaTransazioni(risposta);
+                },
+                error: function (stato) {
+                    $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                    setTimeout(function () { $(".btn-close")[0].click() }, 4000);
                 }
-                mappaTransazioni(risposta);
-            },
-            error: function (stato) {
-                $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
-                setTimeout(function () { $(".btn-close")[0].click() }, 4000);
-            }
-        });
-        $(".filtro-transazioni").on("keyup", function(){
-            applicaFiltriTransazioni($("#customer")[0], $("#merchant")[0], $("#cardNumber")[0], $("#maxCredit")[0], $("#minCredit")[0], 0, 1, 2, 3, $("#tabellaTransazioni")[0]);
-        });
-    
-        $(".filtro-numerico").on("change", function(){
-            applicaFiltriTransazioni($("#customer")[0], $("#merchant")[0], $("#cardNumber")[0], $("#maxCredit")[0], $("#minCredit")[0], 0, 1, 2, 3, $("#tabellaTransazioni")[0]);
-        });
+            });
+        }else{
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:8080/transaction/listAll",
+                headers: {
+                    "SESSION-TOKEN": sessionStorage.getItem('token')
+                },
+                success: function (risposta) {
+                    if(risposta.length==0){
+                        $("#contenitore").append("<div class=\"alert alert-warning alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Non sono presenti transazioni!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                    }
+                    mappaTransazioni(risposta);
+                },
+                error: function (stato) {
+                    $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                    setTimeout(function () { $(".btn-close")[0].click() }, 4000);
+                }
+            });
+            $(".filtro-transazioni").on("keyup", function(){
+                applicaFiltriTransazioni($("#customer")[0], $("#merchant")[0], $("#cardNumber")[0], $("#maxCredit")[0], $("#minCredit")[0], 0, 1, 2, 3, $("#tabellaTransazioni")[0]);
+            });
+        
+            $(".filtro-numerico").on("change", function(){
+                applicaFiltriTransazioni($("#customer")[0], $("#merchant")[0], $("#cardNumber")[0], $("#maxCredit")[0], $("#minCredit")[0], 0, 1, 2, 3, $("#tabellaTransazioni")[0]);
+            });
+        }
     }
 
     if ($("#paginaClienti").length > 0) {
@@ -271,6 +291,34 @@ $(document).ready(function () {
             },
             success: function (risposta) {
                 mappaSelectClienti(risposta.customers);
+            },
+            error: function (stato) {
+                $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                setTimeout(function () { $(".btn-close")[0].click() }, 4000);
+            }
+        });
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/user/list/merchants",
+            headers: {
+                "SESSION-TOKEN": sessionStorage.getItem('token')
+            },
+            success: function (risposta) {
+                mappaSelectClienti(risposta.merchants);
+            },
+            error: function (stato) {
+                $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");
+                setTimeout(function () { $(".btn-close")[0].click() }, 4000);
+            }
+        });
+        $.ajax({
+            method: "GET",
+            url: "http://localhost:8080/user/list/admin",
+            headers: {
+                "SESSION-TOKEN": sessionStorage.getItem('token')
+            },
+            success: function (risposta) {
+                mappaSelectClienti(risposta.admin);
             },
             error: function (stato) {
                 $("#pagetitle").prepend("<div class=\"alert alert-danger alert-dismissible fade show allerta\" role=\"alert\" ><i class=\"bi bi-exclamation-octagon me-1\"></i>Si &egrave; verificato un problema, controllare la connessione di rete e riprovare!<button type=\"button\" style=\"display:none;\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>");

@@ -54,4 +54,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Transactional
     @Query(value="DELETE FROM transaction WHERE user_shop_id = :user_shop_id", nativeQuery = true)
     void deleteAllMerchantTransaction(@Param("user_shop_id") Long user_shop_id);
+
+    /* Query per il recupero delle transazioni*/
+    @Query(value="SELECT * FROM transaction", nativeQuery = true)
+    Optional<List<Transaction>> reportAllTransaction();
 }

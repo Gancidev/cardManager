@@ -57,7 +57,7 @@ public class CounterController extends AbstractController{
             else{
                 counters.add(new Counter());
             }
-            return ResponseEntity.ok(new ResponseToFE(counters, null, null, null));
+            return ResponseEntity.ok(new ResponseToFE(counters, null, null, null, null));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
     }

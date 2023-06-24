@@ -46,22 +46,27 @@ public class TransactionController extends AbstractController{
         if(sessione!=null && (sessione.getPrivileges().equals("admin") || sessione.getPrivileges().equals("venditore"))){
             dto.setUser_shop_id(sessione.getUser().getId());
             Card card = this.cardRepository.findByNumber(dto.getCard_number()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-            if(!card.getBlocked()){
-                //Se è credito minore di 0 allora devo avere il credito sufficiente nella carta per pagare, altrimenti è una ricarica
-                if((dto.getCredit()<0 && card.getCredit()>0 && card.getCredit() >= Math.abs(dto.getCredit())) || dto.getCredit()>0){
-                    CardRequest cardDto = new CardRequest();
-                    cardDto.setNumber(dto.getCard_number());
-                    cardDto.setCredit(dto.getCredit());
-                    this.cardService.updateCredit(cardDto);
-                    dto.setCard_id(card.getCard_id());
-                    Transaction response = this.transactionService.create(dto);
-                    return ResponseEntity.ok(new ResponseToFE(response));
+            if(card.getUser_id() != sessione.getUser().getId()){
+                if(!card.getBlocked()){
+                    //Se è credito minore di 0 allora devo avere il credito sufficiente nella carta per pagare, altrimenti è una ricarica
+                    if((dto.getCredit()<0 && card.getCredit()>0 && card.getCredit() >= Math.abs(dto.getCredit())) || dto.getCredit()>0){
+                        CardRequest cardDto = new CardRequest();
+                        cardDto.setNumber(dto.getCard_number());
+                        cardDto.setCredit(dto.getCredit());
+                        this.cardService.updateCredit(cardDto);
+                        dto.setCard_id(card.getCard_id());
+                        Transaction response = this.transactionService.create(dto);
+                        return ResponseEntity.ok(new ResponseToFE(response));
+                    }else{
+                        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Credito non sufficiente"));
+                    }
                 }else{
-                    return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Credito non sufficiente"));
-                }
+                        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Carta Bloccata"));
+                    }
             }else{
-                    return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Carta Bloccata"));
-                }
+                return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Non si possono effettuare transazioni sulla propria carta"));
+            }
+            
             
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
@@ -80,6 +85,19 @@ public class TransactionController extends AbstractController{
             }
             //Transazioni di cui è il customer
             listTransactions.addAll(this.transactionService.reportMyTransaction(sessione.getUser().getId()));
+            return ResponseEntity.ok(listTransactions);
+        }
+        return ResponseEntity.ok(new ArrayList<>());
+    }
+
+
+    /* API per il recupero delle transazioni di un negoziante*/
+    @GetMapping("/listAll")
+    public ResponseEntity<List<TransactionToFE>> reportAllTransaction() {
+        Session sessione = getSession();
+        if(sessione!=null && sessione.getPrivileges().equals("admin")){
+            List<TransactionToFE> listTransactions = new ArrayList<>();
+            listTransactions = (this.transactionService.reportAllTransaction());
             return ResponseEntity.ok(listTransactions);
         }
         return ResponseEntity.ok(new ArrayList<>());

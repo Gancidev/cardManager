@@ -102,7 +102,7 @@ public class CardService {
     /* Servizio per accreditare o effettuare un pagamento con una carta*/
     public Card updateCredit(CardRequest dto) {
         Double creditCard = this.cardRepository.getCardCredit(dto.getNumber()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        this.cardRepository.updateCardCredit(creditCard+dto.getCredit(), dto.getNumber());
+        this.cardRepository.updateCardCredit((Math.round((creditCard + dto.getCredit()) * 100.0) / 100.0), dto.getNumber());
         return this.cardRepository.findByNumber(dto.getNumber()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 

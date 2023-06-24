@@ -32,7 +32,7 @@ public class UserController extends AbstractController{
         Session sessione = getSession();
         if(sessione!=null && sessione.getPrivileges().equals("admin")){
             List<User> customers = this.userService.getListByRole("cliente");
-            return ResponseEntity.ok(new ResponseToFE(null, null, customers, null));
+            return ResponseEntity.ok(new ResponseToFE(null, null, customers, null, null));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
     }
@@ -43,7 +43,18 @@ public class UserController extends AbstractController{
         Session sessione = getSession();
         if(sessione!=null && sessione.getPrivileges().equals("admin")){
             List<User> merchants = this.userService.getListByRole("venditore");
-            return ResponseEntity.ok(new ResponseToFE(null, null, null, merchants));
+            return ResponseEntity.ok(new ResponseToFE(null, null, null, merchants, null));
+        }
+        return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
+    }
+
+    /* API per il recupero dei customers*/
+    @GetMapping("/list/admin")
+    public ResponseEntity<ResponseToFE> getListOfAdmin() {
+        Session sessione = getSession();
+        if(sessione!=null && sessione.getPrivileges().equals("admin")){
+            List<User> admin = this.userService.getListByRole("admin");
+            return ResponseEntity.ok(new ResponseToFE(null, null, null, null, admin));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
     }

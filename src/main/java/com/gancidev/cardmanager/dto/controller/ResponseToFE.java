@@ -53,7 +53,7 @@ public class ResponseToFE {
         this.errorMessage = errorMessage;
     }
 
-    public ResponseToFE(List<Counter> counters, List<CardToFE> cards, List<User> customers, List<User> merchants){
+    public ResponseToFE(List<Counter> counters, List<CardToFE> cards, List<User> customers, List<User> merchants, List<User> admin){
         if(counters!=null){
             this.counters = counters;
         }
@@ -65,6 +65,9 @@ public class ResponseToFE {
         }
         if(merchants!=null){
             this.merchants = merchants;
+        }
+        if(admin!=null){
+            this.admin = admin;
         }
     }
 }

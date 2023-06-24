@@ -42,7 +42,7 @@ public class CardController extends AbstractController{
         Session sessione = getSession();
         if(sessione!=null){
             List<CardToFE> card = this.cardService.getListOfCards(sessione.getUser().getId());
-            return ResponseEntity.ok(new ResponseToFE(null, card, null, null));
+            return ResponseEntity.ok(new ResponseToFE(null, card, null, null, null));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
     }
@@ -53,7 +53,7 @@ public class CardController extends AbstractController{
         Session sessione = getSession();
         if(sessione!=null && sessione.getPrivileges().equals("admin")){
             List<CardToFE> card = this.cardService.getAllCards();
-            return ResponseEntity.ok(new ResponseToFE(null, card, null, null));
+            return ResponseEntity.ok(new ResponseToFE(null, card, null, null, null));
         }
         return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE));
     }
