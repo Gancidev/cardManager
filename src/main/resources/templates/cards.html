@@ -41,32 +41,32 @@
             </div>
         </div>
     </header>
-    <div class="container">
+    <div class="container" id="contenitore1">
         <main>
             <div class="py-5 text-center">
                 <h2>Lista Carte</h2>
             </div>
             <div class="row">
-                <div class="col-md-12 col-lg-12">
+                <div class="col-md-12 col-lg-12" id="contenitore2">
                     <div class="row filter">
                         <div class="col-md-4">
-                            <label for="cardNumber" class="form-label">Filtro Carta</label>
-                            <input type="text" class="form-control" id="cardNumber" onkeyup="filter(this, 0,'tabellaCarte');" placeholder="00001111222233334444">
+                            <label for="cardNumberFilter" class="form-label">Filtro Carta</label>
+                            <input type="text" class="form-control filtro-carte" id="cardNumberFilter" placeholder="00001111222233334444">
                         </div>
                         <div class="col-md-3">
                             <label for="email" class="form-label">Email proprietario</label>
-                            <input type="text" class="form-control" id="email" onkeyup="filter(this, 2,'tabellaCarte');" placeholder="mario@rossi.it">
+                            <input type="text" class="form-control filtro-carte" id="email" placeholder="mario@rossi.it">
                         </div>
                         <div class="col-md-2">
                             <label for="maxCredit" class="form-label">Credito Massimo</label>
-                            <input type="text" class="form-control" id="maxCredit" placeholder="10000.00">
+                            <input type="number" class="form-control filtro-numerico-carte" id="maxCredit" placeholder="10000.00">
                         </div>
                         <div class="col-md-2">
                             <label for="minCredit" class="form-label">Credito Minimo</label>
-                            <input type="text" class="form-control" id="minCredit" placeholder="-10000.00">
+                            <input type="number" class="form-control filtro-numerico-carte" id="minCredit" placeholder="-10000.00">
                         </div>
                         <div class="col-md-1">
-                            <button type="button" onclick="tableToCSV(2, 'carte')" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
+                            <button type="button" onclick="convertiInCSV(2, 'carte')" class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="Scarica Report"><i
                                     class="bi bi-box-arrow-down"></i></button>
                         </div>

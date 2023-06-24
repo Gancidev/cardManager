@@ -47,22 +47,22 @@
                 <h2>Lista Clienti</h2>
             </div>
             <div class="row">
-                <div class="col-md-12 col-lg-12">
+                <div class="col-md-12 col-lg-12" id="contenitore">
                     <div class="row filter">
                         <div class="col-md-4">
                             <label for="email" class="form-label">Filtro email</label>
-                            <input type="text" class="form-control" id="email" onkeyup="filter(this, 0,'tabellaClienti');" placeholder="mario@rossi.it">
+                            <input type="text" class="form-control filtro-utenti" id="email" placeholder="mario@rossi.it">
                         </div>
                         <div class="col-md-4">
                             <label for="name" class="form-label">Filtro nome</label>
-                            <input type="text" class="form-control" id="name" onkeyup="filter(this, 1,'tabellaClienti');" placeholder="Mario Rossi">
+                            <input type="text" class="form-control filtro-utenti" id="name" placeholder="Mario Rossi">
                         </div>
                         <div class="col-md-3">
                             <label for="surname" class="form-label">Filtro cognome</label>
-                            <input type="text" class="form-control" id="surname" onkeyup="filter(this, 2,'tabellaClienti');" placeholder="Mario Rossi">
+                            <input type="text" class="form-control filtro-utenti" id="surname" placeholder="Mario Rossi">
                         </div>
                         <div class="col-md-1">
-                            <button type="button" onclick="tableToCSV(1, 'clienti')"
+                            <button type="button" onclick="convertiInCSV(1, 'clienti')"
                                 class="w-100 btn btn-lg btn-outline-primary" data-bs-toggle="tooltip"
                                 data-bs-placement="top" title="Scarica Report"><i
                                     class="bi bi-box-arrow-down"></i></button>

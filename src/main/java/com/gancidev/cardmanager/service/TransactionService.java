@@ -81,9 +81,11 @@ public class TransactionService {
         listTransactions.forEach(transaction->{
             TransactionToFE tmp = new TransactionToFE(transaction);
             Card tmpCard = this.cardRepository.findById(transaction.getCard_id()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-            User tmpUser = this.userRepository.findById(tmpCard.getUser_id()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            User tmpCustomer = this.userRepository.findById(tmpCard.getUser_id()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            User tmpMerchant = this.userRepository.findById(transaction.getUser_shop_id()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
             tmp.setCardNumber(tmpCard.getNumber());
-            tmp.setCustomer(StringUtils.join(tmpUser.getName(), " ", tmpUser.getSurname()));
+            tmp.setCustomer(StringUtils.join(tmpCustomer.getName(), " ", tmpCustomer.getSurname()));
+            tmp.setMerchant(StringUtils.join(tmpMerchant.getName(), " ", tmpMerchant.getSurname()));
             listTransactionsCompleted.add(tmp);
         });
         return listTransactionsCompleted;

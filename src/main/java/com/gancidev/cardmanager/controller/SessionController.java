@@ -35,8 +35,12 @@ public class SessionController extends AbstractController{
         Session sessione = null;
         Optional<User> user = this.sessionService.checkCredential(dto);
         if(user.isPresent()){
-            sessione = this.sessionService.createSession(user);
-            return ResponseEntity.ok(new ResponseToFE(sessione));
+            if(user.get().getDisabled()){
+                return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Utenza bloccata, contattare l'amministratore per ulteriori informazioni"));
+            }else{
+                sessione = this.sessionService.createSession(user);
+                return ResponseEntity.ok(new ResponseToFE(sessione));
+            }
         }
         else{
             return ResponseEntity.ok(new ResponseToFE(Boolean.TRUE, "Credenziali Errate"));

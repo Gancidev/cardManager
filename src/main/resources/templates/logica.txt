@@ -1,5 +1,8 @@
-Se sono un admin vedo e posso fare tutto.
 
-Se sono un customer entro e vedo solo la sezione cards con le mie carte e transactions con le mie transazioni, nelle transazioni posso anche scaricare un report csv.
 
-Se sono un merchant entro e vedo transaction contestualizzate a me con possibilità di filtro e bottone per scaricare report csv, ma anche la sezione per poter aggiungere transazioni.
+
+
+
+METTERE I CONTROLLI SUL CREDITO PER NON ANDARE IN ROSSO
+
+METTERE I CONTROLLI SUL LOGIN PER NON FARE ENTRARE I VENDITORI DISABILITATI
