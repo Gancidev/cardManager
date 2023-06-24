@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import com.gancidev.cardmanager.dto.controller.UserRequest;
 import com.gancidev.cardmanager.model.User;
 import com.gancidev.cardmanager.repository.CardRepository;
 import com.gancidev.cardmanager.repository.TransactionRepository;
 import com.gancidev.cardmanager.repository.UserRepository;
+
 
 @Service
 public class UserService {
@@ -52,7 +54,7 @@ public class UserService {
         user.setEmail(dto.getEmail());
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());
-        user.setPassword(dto.getPassword());
+        user.setPassword(DigestUtils.md5Hex(dto.getPassword()));
         user.setRole(dto.getRole());
         user.setDisabled(Boolean.FALSE);
         try {

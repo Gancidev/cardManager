@@ -2,6 +2,7 @@ package com.gancidev.cardmanager.controller;
 
 import java.util.Optional;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,7 @@ public class SessionController extends AbstractController{
     @PostMapping("/login")
     public ResponseEntity<ResponseToFE> login(@RequestBody UserRequest dto) {
         Session sessione = null;
+        dto.setPassword(DigestUtils.md5Hex(dto.getPassword()));
         Optional<User> user = this.sessionService.checkCredential(dto);
         if(user.isPresent()){
             if(user.get().getDisabled()){

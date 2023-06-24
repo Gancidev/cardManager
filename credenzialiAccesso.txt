@@ -1,0 +1,13 @@
+Email per l'accesso all'applicativo web:
+        Admin:
+            giuseppe@admin.it
+
+        Clienti:
+            giuseppe@cliente.it
+            giovanni@cliente.it
+
+        Venditori:
+            giuseppe@venditore.it
+            giuseppe@venditore2.it
+
+Password (uguale per tutti gli utenti): cardmanager

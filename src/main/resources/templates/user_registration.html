@@ -18,7 +18,7 @@
 
 <body class="bg-light">
   <script>
-    if (!sessionStorage.getItem('token') || sessionStorage.getItem('privileges')!="admin") {
+    if (!sessionStorage.getItem('token') || sessionStorage.getItem('privileges') != "admin") {
       window.location.href = "index.html";
     }
   </script>
@@ -26,7 +26,7 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img src="../static/assets/logo.png" alt="" width="300">
+          <img src="../static/assets/logo.png" alt="" width="300">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="index.html" class="nav-link px-2 text-white">Home</a></li>
@@ -62,13 +62,17 @@
               <div class="col-md-3">
                 <label for="role" class="form-label">Ruolo</label>
                 <select class="form-select" id="role" required>
-                    <option value="">Scegli...</option>
-                    <option value="admin">Admin</option>
-                    <option value="cliente">Cliente</option>
-                    <option value="venditore">venditore</option>
+                  <option value="">Scegli...</option>
+                  <option value="admin">Admin</option>
+                  <option value="cliente">Cliente</option>
+                  <option value="venditore">venditore</option>
                 </select>
-            </div>
-              <div class="col-12">
+              </div>
+              <div class="col-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="***" required>
+              </div>
+              <div class="col-6">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" placeholder="tu@esempio.com" required>
               </div>
@@ -81,7 +85,7 @@
     </main>
   </div>
   <script src="../static/js/bootstrap.bundle.min.js"></script>
-  <script src="../static/js/jquery-3.7.0.min.js"></script> 
+  <script src="../static/js/jquery-3.7.0.min.js"></script>
   <script src="../static/js/main.js"></script>
 </body>
 

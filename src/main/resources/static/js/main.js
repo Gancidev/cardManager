@@ -404,6 +404,10 @@ $(document).ready(function () {
             document.getElementById("role").focus();
             return;
         }
+        if (document.getElementById("password").value == "") {
+            document.getElementById("password").focus();
+            return;
+        }
         if (document.getElementById("email").value == "" || !mailRegex.test(document.getElementById("email").value)) {
             document.getElementById("email").focus();
             return;
@@ -420,7 +424,7 @@ $(document).ready(function () {
                 "name": document.getElementById("name").value,
                 "surname": document.getElementById("surname").value,
                 "email": document.getElementById("email").value,
-                "password": "ciao",
+                "password": document.getElementById("password").value,
                 "role": document.getElementById("role").value
             }),
             success: function (risposta) {
